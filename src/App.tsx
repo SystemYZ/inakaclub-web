@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import contentData from './data/content.json';
+import masterIllust from './assets/master_illust.jpg';
 
 const App: React.FC = () => {
   const { storeInfo, content, links } = contentData;
@@ -54,7 +55,7 @@ const App: React.FC = () => {
           <div className="relative group">
             <div className="absolute -inset-4 border border-amber-900/30 transition-all group-hover:-inset-2"></div>
             <img 
-              src="./src/assets/master_illust.jpg" 
+              src={masterIllust} 
               alt="Master" 
               className="relative z-10 w-full h-[450px] object-contain bg-[#1a1512] p-5 grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl"
             />
