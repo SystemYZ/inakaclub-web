@@ -1,0 +1,52 @@
+:root {
+  /* --- Authentic Snack Palette --- */
+  --bg-dark: #0a0a0a;
+  --bg-surface: #1a1512; /* Warm dark brown */
+  --text-main: #f5f5f5;
+  --text-muted: #bdc3c7;
+  --accent-gold: #d4af37;
+  --accent-amber: #ffbf00;
+  --accent-neon-pink: #ff00ff;
+  --accent-neon-purple: #bf00ff;
+
+  /* --- Glassmorphism & Shadow --- */
+  --glass-bg: rgba(26, 21, 18, 0.8);
+  --shadow-warm: 0 4px 30px rgba(0, 0, 0, 0.5);
+
+  /* --- Transitions --- */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  font-family: 'Noto Sans JP', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Typography Overrides */
+h1, h2, h3, h4 {
+  font-family: 'Noto Serif JP', serif;
+  letter-spacing: 0.1em;
+  color: var(--text-main);
+}
+
+/* Neon Glow Effect Utility */
+.neon-text-pink {
+  text-shadow: 0 0 5px var(--accent-neon-pink), 0 0 10px var(--accent-neon-pink);
+}
+
+.neon-text-purple {
+  text-shadow: 0 0 5px var(--accent-neon-purple), 0 0 10px var(--accent-neon-purple);
+}
+
+/* Amber Glow Effect Utility */
+.amber-glow {
+  box-shadow: 0 0 20px rgba(255, 191, 0, 0.2);
+}

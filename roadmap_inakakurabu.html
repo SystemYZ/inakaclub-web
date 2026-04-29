@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>いなかくらぶ Web Manager - 開発ロードマップ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            color: #1a1512;
+            font-size: 2rem;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .phase-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-left: 5px solid #d4af37;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .phase-title {
+            font-size: 1.4rem;
+            color: #1a1512;
+            margin-top: 0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .phase-desc {
+            color: #777;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #444;
+            font-size: 1.1rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #d4af37;
+            font-weight: bold;
+        }
+        
+        .master-task li::before {
+            content: '🍸';
+            color: initial;
+        }
+
+        .gabin-task li::before {
+            content: '💻';
+            color: initial;
+        }
+
+        .ai-task li::before {
+            content: '🤖';
+            color: initial;
+        }
+
+        .alert-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffbf00;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 4px;
+        }
+
+        .alert-title {
+            color: #b38600;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .alert-box p {
+            margin: 0;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 0;
+                padding: 30px 20px;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>いなかくらぶ Web Manager<br>開発・公開ロードマップ</h1>
+    <p class="subtitle">「誰が」「何を」「いつ」準備すべきかの進行手順</p>
+
+    <!-- フェーズ1 -->
+    <div class="phase-card">
+        <h2 class="phase-title">🚀 フェーズ1：開発・実験フェーズ</h2>
+        <p class="phase-desc">まずはマスターに負担をかけずに、Gabinの環境で実験と開発を進める期間です。</p>
+
+        <h3>👨‍💻 Gabinにお願いすること</h3>
+        <ul class="gabin-task">
+            <li><strong>GitHubリポジトリの準備</strong>: ソースコードを管理する場所を作成</li>
+            <li><strong>仮ドメインの準備</strong>: テスト公開用のサブドメイン（例: inaka.gabin-domain.com）を割り当て</li>
+            <li><strong>管理用LINEアカウントの作成</strong>: 開発テスト用のLINEボットアカウントを作成</li>
+            <li><strong>バックエンド環境の用意</strong>: LINE連携用のサーバーアカウントの準備</li>
+        </ul>
+
+        <h3>🤖 アンちゃん（AI）がやること</h3>
+        <ul class="ai-task">
+            <li>GitHub Actionsを使った「自動ビルド＆自動公開」の仕組み作り</li>
+            <li>LINEメッセージを受け取って、サイトの中身を書き換えるプログラムの開発</li>
+        </ul>
+
+        <h3>🍸 マスターにお願いすること</h3>
+        <ul class="master-task">
+            <li><strong>特になし！</strong></li>
+            <li>たまにGabinが見せる「仮サイト」や「LINE更新のテスト」を見て、感想をもらうだけです。</li>
+        </ul>
+    </div>
+
+    <!-- フェーズ2 -->
+    <div class="phase-card">
+        <h2 class="phase-title">🚢 フェーズ2：本番移行フェーズ</h2>
+        <p class="phase-desc">システムが完成し、「本番運用にいこう！」となったタイミングで行う作業です。</p>
+
+        <h3>🍸 マスターにお願いすること</h3>
+        <ul class="master-task">
+            <li><strong>独自ドメインの取得</strong>: 「お店専用のURL（inakaclub.comなど）」が欲しい場合のみ取得</li>
+            <li><strong>GitHubの無料アカウント作成</strong>: サイトの仕組みをマスター自身の所有物として管理するため</li>
+        </ul>
+
+        <h3>👨‍💻 Gabinにお願いすること</h3>
+        <ul class="gabin-task">
+            <li><strong>環境のお引越し</strong>: Gabinの環境から、マスターのアカウントへデータを移行</li>
+            <li><strong>ドメイン設定</strong>: マスターのドメインでサイトが見れるように設定</li>
+            <li><strong>LINEの本番紐付け</strong>: テスト用から、実際にお店で使うLINEアカウントへ設定切り替え</li>
+        </ul>
+    </div>
+
+    <!-- フェーズ3 -->
+    <div class="phase-card">
+        <h2 class="phase-title">🌟 フェーズ3：本番運用</h2>
+        <p class="phase-desc">サイト公開後の日常的な運用です。</p>
+
+        <h3>🍸 マスターにお願いすること</h3>
+        <ul class="master-task">
+            <li><strong>LINEでつぶやくだけ！</strong></li>
+            <li>例：「明日は臨時休業します」「新しい焼酎が入ったよ」とLINEに送るだけで完了です。</li>
+        </ul>
+
+        <h3>🤖 システムの裏側</h3>
+        <ul class="ai-task">
+            <li>アンちゃん（AI）がメッセージを理解してデータを書き換え、数分後には自動的にサイトが更新されます。</li>
+        </ul>
+    </div>
+
+    <div class="alert-box">
+        <p class="alert-title">💡 現在の状況</p>
+        <p>現在は「フェーズ1」の入り口です。まずはGabinの環境を使って、アンちゃんが自動更新の仕組み（裏側）を作り始めます！</p>
+    </div>
+
+</div>
+
+</body>
+</html>

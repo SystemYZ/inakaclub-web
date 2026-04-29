@@ -1,0 +1,18 @@
+/* App Specific Styles */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section-padding {
+  padding: 4rem 0;
+}
+
+.card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-warm);
+}

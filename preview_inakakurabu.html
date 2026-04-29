@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>いなかくらぶ - Authentic Snack Bar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-surface: #1a1512;
+            --text-main: #f5f5f5;
+            --text-muted: #bdc3c7;
+            --accent-gold: #d4af37;
+            --accent-amber: #ffbf00;
+            --accent-neon-pink: #ff00ff;
+            --accent-neon-purple: #bf00ff;
+            --glass-bg: rgba(26, 21, 18, 0.8);
+            --shadow-warm: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 0.1em;
+            margin: 0;
+        }
+
+        .neon-text-pink {
+            text-shadow: 0 0 5px var(--accent-neon-pink), 0 0 15px var(--accent-neon-pink);
+        }
+
+        /* --- Header / Hero --- */
+        header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 6rem);
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: var(--accent-amber);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: var(--accent-gold);
+            margin: 0 auto 30px;
+        }
+
+        /* --- Sections --- */
+        .section-padding {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* --- Master --- */
+        .master-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .master-photo-wrapper {
+            position: relative;
+        }
+
+        .master-photo-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            bottom: 10px;
+            left: 10px;
+            border: 1px solid var(--accent-gold);
+            z-index: 1;
+        }
+
+        .master-photo {
+            width: 100%;
+            height: 450px;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            background-color: #1a1512;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: var(--shadow-warm);
+        }
+
+        .master-badge {
+            position: absolute;
+            top: 20px;
+            right: -20px;
+            background: rgba(0,0,0,0.9);
+            padding: 8px 15px;
+            border: 1px solid var(--accent-gold);
+            z-index: 3;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+        }
+
+        /* --- System Cards --- */
+        .system-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: var(--bg-surface);
+            padding: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-neon-pink);
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            color: var(--accent-amber);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .card-price {
+            font-size: 1.8rem;
+            font-family: 'Noto Serif JP', serif;
+            margin-top: 20px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #000;
+            padding: 80px 20px 40px;
+            border-top: 1px solid #111;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: left;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .label {
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .master-grid { grid-template-columns: 1fr; }
+            header { height: 80vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-content">
+            <h1 class="hero-title neon-text-pink">いなかくらぶ</h1>
+            <p class="hero-tagline">Authentic Snack & Karaoke</p>
+            <div class="divider"></div>
+            <p id="store-desc" style="color: var(--text-muted); line-height: 2;">今宿で30年以上愛される、大人の社交場。扉を開ければ、そこには琥珀色の光が溢れる温かな空間が広がっています。</p>
+        </div>
+    </header>
+
+    <section class="section-padding container">
+        <div class="master-grid">
+            <div class="master-photo-wrapper">
+                <div class="master-badge">SINCE 1990s</div>
+                <img src="./src/assets/master_illust.jpg" class="master-photo" alt="マスター" style="background-color: white; padding: 15px; border-radius: 2px;">
+            </div>
+            <div>
+                <span class="label">The Owner</span>
+                <h2 id="master-name" style="font-size: 2.5rem; margin-bottom: 30px;">マスター</h2>
+                <p id="master-message" style="color: var(--text-muted); line-height: 2.2; font-style: italic; font-size: 1.1rem;">
+                    「今宿の地で皆様に支えられ、30年以上。美味しいお酒と楽しい時間を提供することが私の誇りです。皆様のお越しを、笑顔でお待ちしております。」
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: #050505;" class="section-padding">
+        <div class="container text-center">
+            <span class="label">System</span>
+            <h2 style="font-size: 3rem; margin-bottom: 50px;">ご案内</h2>
+            <div class="system-grid">
+                <div class="card">
+                    <h3 class="card-title">飲み放題コース</h3>
+                    <p style="color: #888; font-size: 0.9rem;">焼酎・ウイスキー・カクテル各種</p>
+                    <p class="card-price">3,000円〜</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">ボトルキープ</h3>
+                    <p style="color: #888; font-size: 0.9rem;">各種銘柄取り揃えております</p>
+                    <p class="card-price">ASK</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">カラオケ</h3>
+                    <p style="color: #888; font-size: 0.9rem;">最新機種完備。こだわりの音響</p>
+                    <p class="card-price">FREE</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h2 class="footer-logo neon-text-pink">いなかくらぶ</h2>
+                    <p style="font-size: 0.8rem; color: #555;">&copy; 2026 Inaka-club Project<br>Created by Gabin & An-chan</p>
+                </div>
+                <div>
+                    <span class="label">Opening Hours</span>
+                    <p style="font-size: 0.9rem;">20:00 - 01:00</p>
+                    <p style="font-size: 0.8rem; color: #666;">Closed: 日曜日・祝日</p>
+                </div>
+                <div>
+                    <span class="label">Access</span>
+                    <p style="font-size: 0.9rem;">福岡県福岡市西区今宿駅前1-3-11</p>
+                    <p style="font-size: 0.8rem; color: #666;">JR筑肥線 今宿駅から徒歩1分</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
