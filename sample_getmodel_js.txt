@@ -1,0 +1,13 @@
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+const genAI = new GoogleGenerativeAI("YOUR_API_KEY");
+
+async function listModels() {
+  const response = await genAI.listModels();
+  response.models.forEach((model) => {
+    console.log(`モデル名: ${model.name}`);
+    // model.supportedGenerationMethods.includes('generateContent') などでフィルタも可能
+  });
+}
+
+listModels();
