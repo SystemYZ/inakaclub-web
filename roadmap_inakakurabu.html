@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>いなかくらぶ Web Manager - 開発ロードマップ</title>
+    <title>Public House いなかくらぶ Web Manager - 開発ロードマップ</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap');
 
@@ -22,7 +23,7 @@
             background: #fff;
             padding: 40px 60px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         h1 {
@@ -48,7 +49,7 @@
             border-radius: 8px;
             padding: 25px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
         }
 
         .phase-title {
@@ -98,7 +99,7 @@
             color: #d4af37;
             font-weight: bold;
         }
-        
+
         .master-task li::before {
             content: '🍸';
             color: initial;
@@ -143,80 +144,95 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h1>いなかくらぶ Web Manager<br>開発・公開ロードマップ</h1>
-    <p class="subtitle">「誰が」「何を」「いつ」準備すべきかの進行手順</p>
+    <div class="container">
+        <h1>Public House いなかくらぶ Web Manager<br>開発・公開ロードマップ</h1>
+        <p class="subtitle">「誰が」「何を」「いつ」準備すべきかの進行手順</p>
 
-    <!-- フェーズ1 -->
-    <div class="phase-card">
-        <h2 class="phase-title">🚀 フェーズ1：開発・実験フェーズ</h2>
-        <p class="phase-desc">まずはマスターに負担をかけずに、Gabinの環境で実験と開発を進める期間です。</p>
+        <!-- フェーズ1 -->
+        <div class="phase-card">
+            <h2 class="phase-title">🚀 フェーズ1：開発・実験フェーズ</h2>
+            <p class="phase-desc">まずはマスターに負担をかけずに、Gabinの環境で実験と開発を進める期間です。</p>
 
-        <h3>👨‍💻 Gabinにお願いすること</h3>
-        <ul class="gabin-task">
-            <li><strong>GitHubリポジトリの準備</strong>: ソースコードを管理する場所を作成</li>
-            <li><strong>仮ドメインの準備</strong>: テスト公開用のサブドメイン（例: inaka.gabin-domain.com）を割り当て</li>
-            <li><strong>管理用LINEアカウントの作成</strong>: 開発テスト用のLINEボットアカウントを作成</li>
-            <li><strong>バックエンド環境の用意</strong>: LINE連携用のサーバーアカウントの準備</li>
-        </ul>
+            <h3>👨‍💻 Gabinにお願いすること</h3>
+            <ul class="gabin-task">
+                <li><strong>GitHubリポジトリの準備</strong>: ソースコードを管理する場所を作成</li>
+                <li><strong>仮ドメインの準備</strong>: テスト公開用のサブドメイン（例: inaka.gabin-domain.com）を割り当て</li>
+                <li><strong>管理用LINEアカウントの作成</strong>: 開発テスト用のLINEボットアカウントを作成</li>
+                <li><strong>バックエンド環境の用意</strong>: LINE連携用のサーバーアカウントの準備</li>
+            </ul>
 
-        <h3>🤖 アンちゃん（AI）がやること</h3>
-        <ul class="ai-task">
-            <li>GitHub Actionsを使った「自動ビルド＆自動公開」の仕組み作り</li>
-            <li>LINEメッセージを受け取って、サイトの中身を書き換えるプログラムの開発</li>
-        </ul>
+            <h3>🤖 アンちゃん（AI）がやること</h3>
+            <ul class="ai-task">
+                <li>GitHub Actionsを使った「自動ビルド＆自動公開」の仕組み作り</li>
+                <li>LINEメッセージを受け取って、サイトの中身を書き換えるプログラムの開発</li>
+            </ul>
 
-        <h3>🍸 マスターにお願いすること</h3>
-        <ul class="master-task">
-            <li><strong>特になし！</strong></li>
-            <li>たまにGabinが見せる「仮サイト」や「LINE更新のテスト」を見て、感想をもらうだけです。</li>
-        </ul>
+            <h3>🍸 マスターにお願いすること</h3>
+            <ul class="master-task">
+                <li><strong>特になし！</strong></li>
+                <li>たまにGabinが見せる「仮サイト」や「LINE更新のテスト」を見て、感想をもらうだけです。</li>
+            </ul>
+        </div>
+
+        <!-- フェーズ2 -->
+        <div class="phase-card">
+            <h2 class="phase-title">🚢 フェーズ2：プレ公開・試験運用</h2>
+            <p class="phase-desc">システムが形になり、実際にお店のドメインで動かしてみる期間です。</p>
+
+            <h3>🍸 マスターにお願いすること</h3>
+            <ul class="master-task">
+                <li><strong>独自ドメインの取得</strong>: 「お店専用のURL（inakaclub.comなど）」を決定・取得</li>
+                <li><strong>LINE公式アカウントの準備</strong>: お店用のアカウントを作成（管理はGabinがお手伝い）</li>
+            </ul>
+
+            <h3>👨‍💻 Gabinにお願いすること</h3>
+            <ul class="gabin-task">
+                <li><strong>独自ドメインの設定</strong>: 取得したドメインでサイトが見れるように設定</li>
+                <li><strong>試験運用の伴走</strong>: 実際にLINEで更新してもらいながら、微調整を行う</li>
+            </ul>
+            <p><small>※この期間は、Gabinのサーバー環境（Cloudflare/Gemini等）を使用して、スピード重視で公開します。</small></p>
+        </div>
+
+        <!-- フェーズ3 -->
+        <div class="phase-card" style="border-left-color: #e67e22;">
+            <h2 class="phase-title">🎁 フェーズ3：正式譲渡・環境の完全移行</h2>
+            <p class="phase-desc">数ヶ月の運用を経て、すべてをマスター名義の資産としてお渡しします。</p>
+
+            <h3>🍸 マスターにお願いすること</h3>
+            <ul class="master-task">
+                <li><strong>各アカウントの無料作成</strong>: GitHub、Cloudflare、Google(Gemini)のアカウントを作成</li>
+                <li>（Gabinが横で一緒に作成をお手伝いします！）</li>
+            </ul>
+
+            <h3>👨‍💻 Gabinにお願いすること</h3>
+            <ul class="gabin-task">
+                <li><strong>資産の「お引越し」</strong>: プログラムやサーバー設定を、すべてマスターのアカウントへ移行</li>
+                <li><strong>完全な独立</strong>: これにより、サイトは100%「お店の資産」として完結します</li>
+            </ul>
+        </div>
+
+        <!-- フェーズ4 -->
+        <div class="phase-card">
+            <h2 class="phase-title">🌟 フェーズ4：本番運用</h2>
+            <p class="phase-desc">マスターが「オーナー」として、末永く運用していくフェーズです。</p>
+
+            <h3>🍸 マスターがやること</h3>
+            <ul class="master-task">
+                <li><strong>LINEでつぶやくだけ！</strong></li>
+                <li>（もし何かあっても、Gabinとアンちゃんがサポートするから大丈夫！）</li>
+            </ul>
+        </div>
+
+        <div class="alert-box">
+            <p class="alert-title">💡 現在の状況</p>
+            <p>現在は「フェーズ1」の途中段階です。まずはGabinの環境を使って、アンちゃんが自動更新の仕組み（裏側）を作ってます！</p>
+        </div>
+
     </div>
-
-    <!-- フェーズ2 -->
-    <div class="phase-card">
-        <h2 class="phase-title">🚢 フェーズ2：本番移行フェーズ</h2>
-        <p class="phase-desc">システムが完成し、「本番運用にいこう！」となったタイミングで行う作業です。</p>
-
-        <h3>🍸 マスターにお願いすること</h3>
-        <ul class="master-task">
-            <li><strong>独自ドメインの取得</strong>: 「お店専用のURL（inakaclub.comなど）」が欲しい場合のみ取得</li>
-            <li><strong>GitHubの無料アカウント作成</strong>: サイトの仕組みをマスター自身の所有物として管理するため</li>
-        </ul>
-
-        <h3>👨‍💻 Gabinにお願いすること</h3>
-        <ul class="gabin-task">
-            <li><strong>環境のお引越し</strong>: Gabinの環境から、マスターのアカウントへデータを移行</li>
-            <li><strong>ドメイン設定</strong>: マスターのドメインでサイトが見れるように設定</li>
-            <li><strong>LINEの本番紐付け</strong>: テスト用から、実際にお店で使うLINEアカウントへ設定切り替え</li>
-        </ul>
-    </div>
-
-    <!-- フェーズ3 -->
-    <div class="phase-card">
-        <h2 class="phase-title">🌟 フェーズ3：本番運用</h2>
-        <p class="phase-desc">サイト公開後の日常的な運用です。</p>
-
-        <h3>🍸 マスターにお願いすること</h3>
-        <ul class="master-task">
-            <li><strong>LINEでつぶやくだけ！</strong></li>
-            <li>例：「明日は臨時休業します」「新しい焼酎が入ったよ」とLINEに送るだけで完了です。</li>
-        </ul>
-
-        <h3>🤖 システムの裏側</h3>
-        <ul class="ai-task">
-            <li>アンちゃん（AI）がメッセージを理解してデータを書き換え、数分後には自動的にサイトが更新されます。</li>
-        </ul>
-    </div>
-
-    <div class="alert-box">
-        <p class="alert-title">💡 現在の状況</p>
-        <p>現在は「フェーズ1」の入り口です。まずはGabinの環境を使って、アンちゃんが自動更新の仕組み（裏側）を作り始めます！</p>
-    </div>
-
-</div>
 
 </body>
+
 </html>

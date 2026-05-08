@@ -14,7 +14,7 @@ const Home: React.FC = () => {
           className="absolute inset-0 bg-cover bg-center z-0 scale-105"
           style={{ 
             backgroundImage: 'url("https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070&auto=format&fit=crop")',
-            filter: 'brightness(0.3) contrast(1.1)'
+            filter: 'brightness(0.7) contrast(1.1)'
           }}
         ></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black z-10"></div>
@@ -24,7 +24,10 @@ const Home: React.FC = () => {
           <h1 className="text-6xl md:text-8xl font-serif mb-4 neon-text-pink leading-tight">
             {storeInfo.name}
           </h1>
-          <p className="text-xl md:text-2xl font-light text-amber-500 tracking-[0.3em] uppercase mb-8">
+          <p 
+            className="text-xl md:text-2xl font-light text-amber-500 tracking-[0.3em] uppercase mb-8 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
+            style={{ WebkitTextStroke: '0.25px white', paintOrder: 'stroke' }}
+          >
             {storeInfo.tagline}
           </p>
           <div className="h-px w-24 bg-amber-600 mx-auto mb-8"></div>
@@ -100,18 +103,33 @@ const Home: React.FC = () => {
       <section className="section-padding app-container">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-zinc-900 pb-8">
           <h2 className="text-4xl font-serif">NEWS & EVENTS</h2>
-          <span className="text-amber-800 font-serif italic text-sm">最新情報をお届けします</span>
+          <div className="flex flex-col items-end">
+            <span className="text-amber-800 font-serif italic text-sm mb-2">最新情報をお届けします</span>
+            <a href="/masters-room" className="text-amber-500 hover:text-amber-400 text-xs tracking-widest uppercase flex items-center gap-2 group transition-all">
+              Master's Room <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+          </div>
         </div>
 
         <div className="space-y-12">
-          {content.news.map((item, idx) => (
-            <div key={idx} className="flex flex-col md:flex-row gap-8 border-b border-zinc-900/50 pb-12 hover:bg-zinc-900/10 transition-colors">
+          {content.news.map((item: any, idx) => (
+            <div key={idx} className="flex flex-col md:flex-row gap-8 border-b border-zinc-900/50 pb-12 hover:bg-zinc-900/5 transition-colors group">
               <div className="md:w-1/4">
                 <span className="text-amber-600 font-mono text-sm tracking-tighter">{item.date}</span>
+                {item.category === 'master' && (
+                  <span className="ml-4 px-2 py-1 bg-amber-900/20 text-amber-500 text-[10px] uppercase tracking-tighter border border-amber-900/30">Master</span>
+                )}
               </div>
               <div className="md:w-3/4">
-                <h3 className="text-2xl mb-4">{item.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{item.content}</p>
+                <h3 className="text-2xl mb-4 group-hover:text-amber-500 transition-colors">{item.title}</h3>
+                <p className="text-gray-400 leading-relaxed mb-6">
+                  {item.summary || item.content}
+                </p>
+                {item.category === 'master' && (
+                  <a href="/masters-room" className="inline-flex items-center text-amber-600 hover:text-amber-500 text-sm font-serif italic">
+                    もっと詳しく読む <span className="ml-2">→</span>
+                  </a>
+                )}
               </div>
             </div>
           ))}

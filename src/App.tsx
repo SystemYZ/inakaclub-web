@@ -13,7 +13,7 @@ const App: React.FC = () => {
   const { storeInfo, links } = contentData;
 
   return (
-    <Router basename="/inakaclub-web">
+    <Router>
       <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
         <Navigation />
 
@@ -63,9 +63,9 @@ const App: React.FC = () => {
                 <h4 className="text-sm tracking-widest text-amber-600 uppercase mb-8">Access</h4>
                 <p className="text-gray-300 text-sm mb-4">{storeInfo.location.address}</p>
                 <p className="text-gray-500 text-xs mb-8">{storeInfo.location.access}</p>
-                <a 
-                  href={storeInfo.location.mapUrl} 
-                  target="_blank" 
+                <a
+                  href={storeInfo.location.mapUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs text-amber-600 underline hover:text-amber-400"
                 >
@@ -73,7 +73,7 @@ const App: React.FC = () => {
                 </a>
               </div>
             </div>
-            
+
             <div className="text-center text-[10px] text-zinc-700 uppercase tracking-widest border-t border-zinc-900 pt-12">
               &copy; 2026 {storeInfo.name} / Created by Gabin & An-chan
             </div>

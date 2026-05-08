@@ -23,3 +23,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
+
+# Temporary test/preview files
+instagram_bot_test.html
+instagram_test.html
+preview_v2_inakakurabu.html
+preview_v3_inakakurabu.html
+sample_index.html

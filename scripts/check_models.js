@@ -16,10 +16,23 @@ async function listModels() {
     // ひとまず gemini-1.5-flash を再トライするためのデバッグ情報を出す
     console.log("API Key found:", process.env.GEMINI_API_KEY ? "Yes (starts with " + process.env.GEMINI_API_KEY.substring(0, 8) + "...)" : "No");
     
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const result = await model.generateContent("Hello");
-    console.log("Success! gemini-1.5-flash is working.");
-    console.log("Response:", result.response.text());
+    console.log("Testing 'gemini-flash-latest'...");
+    try {
+      const modelFlash = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+      const resFlash = await modelFlash.generateContent("Hi");
+      console.log("Success: 'gemini-flash-latest' is active.");
+    } catch (e) {
+      console.log("Failed: 'gemini-flash-latest' (Error: " + e.message + ")");
+    }
+
+    console.log("\nTesting 'gemini-3-flash-preview'...");
+    try {
+      const model3 = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
+      const res3 = await model3.generateContent("Hi");
+      console.log("Success: 'gemini-3-flash-preview' is active.");
+    } catch (e) {
+      console.log("Failed: 'gemini-3-flash-preview' (Error: " + e.message + ")");
+    }
     
   } catch (error) {
     console.error("Debug Info:", error);

@@ -33,12 +33,14 @@ const Navigation: React.FC = () => {
           >
             Master's Room
           </Link>
-          <Link 
-            to="/instagram" 
-            className={`hover:text-amber-500 transition-colors ${location.pathname === '/instagram' ? 'text-amber-500' : 'text-zinc-400'}`}
+          <a 
+            href="https://www.instagram.com/inakamaster/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:text-amber-500 transition-colors text-zinc-400"
           >
             Instagram
-          </Link>
+          </a>
         </div>
       </div>
     </nav>
