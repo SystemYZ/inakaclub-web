@@ -1,8 +1,8 @@
 import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
+import http from 'http';
 import { fileURLToPath } from 'url';
-import { preview } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,14 +10,41 @@ const __dirname = path.dirname(__filename);
 async function prerender() {
   console.log('🚀 Starting custom prerender for multi-page...');
   
-  // 1. Preview サーバーを起動
-  const previewServer = await preview({
-    root: path.join(__dirname, '..'),
-    build: { outDir: 'dist' }
+  // 1. 簡易サーバーを起動（SPA対応）
+  const baseUrl = '/inakaclub-web/';
+  const port = 4173;
+  const server = http.createServer((req, res) => {
+    let url = req.url.split('?')[0];
+    // ベースURLを削除
+    if (url.startsWith(baseUrl)) {
+      url = url.replace(baseUrl, '/');
+    }
+    // SPAフォールバック: 拡張子がない場合は index.html を返す
+    if (url !== '/' && !url.includes('.')) {
+      url = '/index.html';
+    }
+    if (url === '/') url = '/index.html';
+
+    const filePath = path.join(__dirname, '../dist', url);
+    if (fs.existsSync(filePath)) {
+      const ext = path.extname(filePath);
+      const contentTypes = {
+        '.html': 'text/html',
+        '.js': 'application/javascript',
+        '.css': 'text/css',
+        '.svg': 'image/svg+xml',
+        '.jpg': 'image/jpeg',
+        '.png': 'image/png'
+      };
+      res.writeHead(200, { 'Content-Type': contentTypes[ext] || 'text/plain' });
+      res.end(fs.readFileSync(filePath));
+    } else {
+      res.writeHead(404);
+      res.end('Not Found');
+    }
   });
-  
-  const port = previewServer.config.preview.port || 4173;
-  const baseUrl = previewServer.config.base || '/';
+
+  await new Promise(resolve => server.listen(port, resolve));
   
   const routes = [
     { path: '/', file: 'index.html' },
@@ -33,10 +60,18 @@ async function prerender() {
   
   try {
     for (const route of routes) {
+      // ベースURLを含めたURLにアクセス
       const url = `http://localhost:${port}${baseUrl}${route.path.replace(/^\//, '')}`;
       console.log(`🌐 Navigating to ${url}...`);
       
-      await page.goto(url, { waitUntil: 'networkidle0' });
+      const response = await page.goto(url, { waitUntil: 'networkidle0' });
+      
+      // 404チェック
+      if (!response || response.status() === 404) {
+        console.error(`❌ Page not found (404): ${url}`);
+        continue;
+      }
+
       await new Promise(r => setTimeout(r, 2000));
       
       const content = await page.content();
@@ -55,7 +90,7 @@ async function prerender() {
     console.error('❌ Prerender failed:', e);
   } finally {
     await browser.close();
-    previewServer.httpServer.close();
+    server.close();
     console.log('🛑 Preview server closed.');
   }
 }

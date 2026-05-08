@@ -13,7 +13,7 @@ const App: React.FC = () => {
   const { storeInfo, links } = contentData;
 
   return (
-    <Router>
+    <Router basename="/inakaclub-web">
       <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
         <Navigation />
 
